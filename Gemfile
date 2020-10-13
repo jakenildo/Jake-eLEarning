@@ -9,6 +9,12 @@ gem 'jquery-rails'
 
 gem 'font-awesome-sass'
 
+gem 'will_paginate', '~> 3.2', '>= 3.2.1'
+
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
+
+gem 'faker', '~> 1.6', '>= 1.6.6'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use mysql as the database for Active Record

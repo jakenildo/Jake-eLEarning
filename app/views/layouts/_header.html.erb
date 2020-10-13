@@ -3,9 +3,18 @@
     <div class="container"><a class="navbar-brand" href="#">Word Choice</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
             id="navcol-1">
-            <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"><a class="login" href="#"><i class="fa fa-home"></i> Dashboard</a></span><span class="navbar-text actions"><a class="login" href="#"><i class="fa fa-book"></i> Lessons</a></span><span class="navbar-text actions"><a class="login" href="#"><i class="fa fa-users"></i> Members</a></span>
-            <span
-                class="navbar-text actions"><a class="login" href="#"><i class="fa fa-user"></i> Admin</a></span>
+            <ul class="nav navbar-nav mr-auto"></ul>
+            <span class="navbar-text actions">
+                <a class="login" href="#"><i class="fa fa-home"></i> Dashboard</a>
+            </span>
+            <span class="navbar-text actions">
+                <a class="login" href="#"><i class="fa fa-book"></i> Lessons</a>
+            </span>
+            <span class="navbar-text actions">
+                <%= link_to raw("<i class='fa fa-users'></i>  Members"), members_path, class: "login" %>
+                <%# <a class="login" href="#"><i class="fa fa-users"></i> Members</a> %>
+            </span>
+            <span class="navbar-text actions"><a class="login" href="#"><i class="fa fa-user"></i> Admin</a></span>
                 <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fa fa-user-circle"></i> Profile</a>
                     <div class="dropdown-menu" role="menu">
