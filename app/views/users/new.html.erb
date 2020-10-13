@@ -1,21 +1,4 @@
- <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container"><a class="navbar-brand" href="#">Word Choice</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse"
-            id="navcol-1">
-            <ul class="nav navbar-nav mr-auto"></ul>
-                <span class="navbar-text actions">
-                    <ul class="nav navbar-nav mr-auto"></ul>
-                        <span class="navbar-text actions">
-                            <%# <a class="btn btn-light action-button" role="button" href="#">Sign Up</a> %>
-                            <%= link_to "Signup", signup_path, class: "btn btn-light action-button", role: "button" %>
-                            <a class="login" href="#">Log In</a>
-                        </span>
-                    </div>
-                </span>
-            </div>
-    </div>
-</nav>
-
+ <% provide(:title, "Sign Up ") %>
 <div class="container">
     <div class="row">
         <div class="col text-center">
