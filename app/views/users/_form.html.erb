@@ -1,0 +1,35 @@
+<%= form_for(@user) do |f| %>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;">
+        <%# <input type="text" placeholder="Name" style="min-width: 300px;" /> %>
+        <%= f.text_field :name, placeholder: "Name", style: "min-width: 300px" %>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;">
+        <%# <input type="email" style="min-width: 300px;" placeholder="Email@Email.com" /> %>
+        <%= f.text_field :email, placeholder: "name@email.com", style: "min-width: 300px" %>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;">
+        <%# <input type="password" placeholder="Password" style="min-width: 300px;" /> %>
+        <%= f.password_field :password, placeholder: "Password", style: "min-width: 300px" %>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;">
+        <%# <input type="password" placeholder="Confirm Password" style="min-width: 300px;" /> %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", style: "min-width: 300px" %>
+
+        <%= f.hidden_field :account_type, value: 0 %>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;margin-top: 10px;">
+        <%= link_to "Cancel", home_path,class: "btn btn-outline-danger", style: "margin-right: 15px;" %>
+        <%= f.submit "Submit", class: "btn btn-outline-success", style: "margin-left: 15px;" %>
+    </div>
+</div>
+
+<% end %>
