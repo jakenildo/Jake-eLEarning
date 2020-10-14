@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home'
   get '/signup', to: 'users#new'
   get '/profile', to: 'users#show'
+  get '/members', to: 'users#index'
   
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
