@@ -1,0 +1,59 @@
+<% provide(:title, @user.name ) %>
+<div class="container">
+    <div class="row">
+        <div class="col" style="padding-top: 2px;">
+            <div class="card" style="min-width: 400;max-width: 400;">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-xl-8 offset-xl-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col" style="padding-bottom: 5px;">
+                                            <div class="row">
+                                                <div class="col">
+                                                <%= gravatar_for @user %>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h3><%= @user.name %>'s Profile</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col" style="padding-bottom: 5px;">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="text-center">Words Learned: [num]</h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><small>Followers: [number]</small></div>
+                                                <div class="col"><small>Following: [Number]</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fa fa-th-list" style="padding-right: 5px;"></i>Activity Feed</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col" style="padding-bottom: 5px;"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col" style="padding-bottom: 5px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<% provide(:title, "Login") %>
+<div class="container">
+    <div class="row">
+        <div class="col text-center align-self-xl-center">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fa fa-pencil" style="padding-right: 5px;"></i>Log in</h5>
+                </div>
+                <div class="card-body">
+                    <%= form_for(:session, url: sessions_path) do |f| %>
+                        <div class="row">
+                            <div class="col" style="padding-bottom: 5px;">
+                                <%= f.text_field :email, placeholder: "name@email.com", style: "min-width: 300px" %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="padding-bottom: 5px;">
+                                <%= f.password_field :password, placeholder: "Password", style: "min-width: 300px" %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="padding-bottom: 5px;margin-top: 10px;">
+                                <%= link_to "Cancel", home_path,class: "btn btn-outline-danger", style: "margin-right: 15px;" %>
+                                <%= f.submit "Submit", class: "btn btn-outline-success", style: "margin-left: 15px;" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <%= image_tag("signup/login.jpg", style: "max-width: 400px; min-width: 100px;")%>
+        </div>
+    </div>
+</div>
