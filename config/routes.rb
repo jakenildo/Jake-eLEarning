@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get 'categories/new'
+  get 'categories/index'
+  get 'categories/edit'
+  get 'categories/update'
+  get 'categories/delete'
+  get 'categories/show'
   resources :users
+  resources :categories
   resources :sessions, only: [:new, :create,:destroy]
 
   root 'static_pages#home'
@@ -16,11 +23,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/lessons', to: 'category#index'
-  get 'category/index'
-  get 'category/show'
-  get 'category/new'
-  get 'category/edit'
-  get 'category/delete'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
