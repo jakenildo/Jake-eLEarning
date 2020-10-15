@@ -10,8 +10,15 @@
   </head>
 
   <body>
+    <div class="container">
     <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
+        <div class="row">
+            <div class="col-xl-4 offset-xl-4 alert alert-<%= key %>  text-center"><%= value %></div>
+        </div>
+      <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

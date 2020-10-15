@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Sign-up Success!"
       redirect_to login_url
     else
+      flash[:warning] = "Sign-up Failed"
       render 'new'
     end
   end
@@ -34,8 +36,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "Info Updated!"
       redirect_to @user
     else
+      flash[:warning] = "Update Failed!"
       render 'edit'
     end
   end
