@@ -36,21 +36,19 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-<<<<<<< HEAD
       flash[:success] = "Info Updated!"
       redirect_to @user
     else
       flash[:warning] = "Update Failed!"
-=======
-      redirect_to @user
-    else
->>>>>>> 7461351... made settings page into update user
       render 'edit'
     end
   end
 
   def destroy
+    name = User.find(params[:id]).name
     User.find(params[:id]).destroy
+    
+    flash[:danger] = "Deleted user #{name} ! :'( "
     redirect_to users_url
   end
 
