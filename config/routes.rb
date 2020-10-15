@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'categories/new'
+  get 'categories/index'
+  get 'categories/edit'
+  get 'categories/update'
+  get 'categories/delete'
+  get 'categories/show'
   resources :users
   resources :categories
   resources :sessions, only: [:new, :create,:destroy]
