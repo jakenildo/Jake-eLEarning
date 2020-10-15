@@ -9,10 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-<<<<<<< HEAD
       flash[:success] = "Sign-up Success!"
-=======
->>>>>>> f79a2f2481b621f8a99f1cd3d565d7a1a1ee19bc
       redirect_to login_url
     else
       flash[:warning] = "Sign-up Failed"
