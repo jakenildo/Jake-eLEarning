@@ -1,0 +1,56 @@
+<% provide(:title, "Lessons List ") %>
+<div class="container">
+    <div class="card" style="min-width: 400;max-width: 400;">
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-xl-8 offset-xl-2">
+                    <div class="card"></div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fa fa-users" style="padding-right: 5px;"></i> Manage Lessons</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row pull-right">
+                                <div class="col offset-xl-9">
+                                    <button class="btn btn-outline-info pull-right" type="button" style="margin-bottom: 12px;"><i class="fa fa-plus"></i> New Lesson</button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="text-info">
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>No of Words</th>
+                                            <th colspan="2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% @category.each do |b| %>
+                                        <tr>
+                                            <td> <%=  link_to b.title %></td>
+                                            <td> <%=  b.description %></td>
+                                            <td>4</td>
+                                            <td>
+                                                <button class="btn btn-outline-primary" type="button"><i class="fa fa-pen text-primary"></i> Edit</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-outline-danger" type="button"><i class="fa fa-trash"></i> Delete</button>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <%= will_paginate %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

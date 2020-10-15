@@ -25,3 +25,11 @@ User.create!(name: "Jake Nildo Giangan",
         password_confirmation: password,
         account_type: 0)
 end
+
+20.times do |n|
+    title = Faker::Game.title
+    desc = Faker::Game.genre
+
+    Category.create!(title: title, 
+                     description: desc)
+end
