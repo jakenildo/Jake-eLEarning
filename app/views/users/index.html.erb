@@ -18,7 +18,9 @@
                                                 <tr>
                                                     <th>Follow</th>
                                                     <th>Name</th>
+                                                    <%if current_user.account_type == 1%>
                                                     <th>Actions</th>
+                                                    <% end %>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -27,10 +29,17 @@
                                                     <td> <button class="btn btn-outline-primary" type="button"><i class="fa fa-plus"></i> Follow</button></td>
                                                     <td> <%= gravatar_for b, size:20 %> 
                                                     <%=  link_to b.name, b %></td>
-                                                    <td> <button class='btn btn-outline-primary' type="button"> <i class="fa fa-user-plus"></i> Make Admin </button>
-                                                        <%= link_to raw("<i class='fa fa-pen'></i>  Edit"), edit_user_path(b), class: "btn btn-outline-primary" %>
+                                                    <%if current_user.account_type == 1%>
+                                                    <td>
+                                                        <%=  if b.account_type == 0
+                                                            link_to raw("<i class='fa fa-user-plus'></i> Make Admin"), make_admin_url(b), class: "btn btn-outline-primary"
+                                                        else
+                                                            link_to raw("<i class='fa fa-user-minus'></i> Remove Admin"), edit_make_admin_path(b), class: "btn btn-outline-warning"
+                                                        end %>
+                                                        
                                                         <%= link_to raw("<i class='fa fa-trash'></i> Delete"), user_path(b), class: "btn btn-outline-danger", method: :delete, data: { confirm: "You sure?" } %>
                                                      </td>
+                                                     <% end %>
                                                 </tr>
                                                 <% end %>
                                             </tbody>

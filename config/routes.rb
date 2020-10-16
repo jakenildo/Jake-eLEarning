@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   resources :categories
   resources :sessions, only: [:new, :create,:destroy]
 
+  resources :make_admin, only: [:show, :edit]
+
   root 'static_pages#home'
   
   get 'static_pages/home'
-  
+
   get '/home', to: 'static_pages#home'
   get '/signup', to: 'users#new'
   get '/profile', to: 'users#show'
