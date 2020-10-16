@@ -35,7 +35,7 @@
                                                 <%= link_to raw("<i class='fa fa-pen'></i>  Edit"), edit_category_path(b), class: "btn btn-outline-primary" %>
                                             </td>
                                             <td>
-                                                <button class="btn btn-outline-danger" type="button"><i class="fa fa-trash"></i> Delete</button>
+                                                <%= link_to raw("<i class='fa fa-trash'></i> Delete"), category_path(b), class: "btn btn-outline-danger", method: :delete, data: { confirm: "You sure?" } %>
                                             </td>
                                         </tr>
                                     <% end %>
