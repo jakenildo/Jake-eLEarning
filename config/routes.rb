@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :users
+  resources :categories
   resources :sessions, only: [:new, :create,:destroy]
 
   root 'static_pages#home'
   
   get 'static_pages/home'
-  # get 'static_pages/setting'
   
   get '/home', to: 'static_pages#home'
   get '/signup', to: 'users#new'
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
-  
+
+  get '/lessons', to: 'categories#index'
+  get '/new_lesson', to: 'categories#new'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

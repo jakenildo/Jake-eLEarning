@@ -7,6 +7,9 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  def only_loggedin_users
+    redirect_to login_url unless logged_in?
+  end
 
   def current_user?(user)
     user == current_user
