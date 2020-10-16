@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <div class="row pull-right">
                                 <div class="col offset-xl-9">
-                                    <%= link_to raw("<i class='fa fa-plus'></i> New Lesson"), new_lesson_url,class: "btn btn-outline-info pull-right", style: "margin-bottom: 12px;" %>
+                                    <button class="btn btn-outline-info pull-right" type="button" style="margin-bottom: 12px;"><i class="fa fa-plus"></i> New Lesson</button>
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -26,16 +26,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <% @categories.each do |b| %>
+                                    <% @category.each do |b| %>
                                         <tr>
                                             <td> <%=  link_to b.title %></td>
                                             <td> <%=  b.description %></td>
                                             <td>4</td>
                                             <td>
-                                                <%= link_to raw("<i class='fa fa-pen'></i>  Edit"), edit_category_path(b), class: "btn btn-outline-primary" %>
+                                                <button class="btn btn-outline-primary" type="button"><i class="fa fa-pen text-primary"></i> Edit</button>
                                             </td>
                                             <td>
-                                                <%= link_to raw("<i class='fa fa-trash'></i> Delete"), category_path(b), class: "btn btn-outline-danger", method: :delete, data: { confirm: "You sure?" } %>
+                                                <button class="btn btn-outline-danger" type="button"><i class="fa fa-trash"></i> Delete</button>
                                             </td>
                                         </tr>
                                     <% end %>
