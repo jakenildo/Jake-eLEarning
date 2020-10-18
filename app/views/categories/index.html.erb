@@ -28,7 +28,7 @@
                                     <tbody>
                                     <% @categories.each do |b| %>
                                         <tr>
-                                            <td> <%=  link_to b.title %></td>
+                                            <td> <%=  link_to b.title, categ_words_url(b.id) %></td>
                                             <td> <%=  b.description %></td>
                                             <td>4</td>
                                             <td>
