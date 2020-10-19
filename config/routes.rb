@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/new_lesson', to: 'categories#new'
 
   get '/categories/:category_id/words', to: 'words#index', :as => :categ_words
+  get '/categories/:category_id/words/new', to: 'words#new', :as => :new_categ_words
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
