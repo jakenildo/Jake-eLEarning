@@ -13,29 +13,12 @@ class WordsController < ApplicationController
 
   def create
     @word = Word.new(word_params)
-    
-    @checker = 0
-    if @word.choices[0].correct_ans == true
-      @checker += 1
-    end
-    if @word.choices[1].correct_ans == true
-      @checker += 1
-    end
-    if @word.choices[2].correct_ans == true
-      @checker += 1
-    end
-
-    if @checker == 1
-      if @word.save
-        flash[:success] = "Word & Choices added to Lesson! ^o^/"
-        redirect_to categ_words_url(@word.category_id)
-      else
-        flash[:danger] = "Failed to insert choice into database :("
-        redirect_to categ_words_url(@word.category_id)
-      end
-    else 
-      flash[:danger] = "Select only one orrect Answer :("
-        redirect_to categ_words_url(@word.category_id)
+    if @word.save
+      flash[:success] = "Word & Choices added to Lesson! ^o^/"
+      redirect_to categ_words_url(@word.category_id)
+    else
+      flash[:danger] = "Failed to insert choice into database :("
+      redirect_to categ_words_url(@word.category_id)
     end
   end
 
