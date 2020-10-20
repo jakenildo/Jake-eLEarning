@@ -1,0 +1,35 @@
+<%= form_for(@word) do |f| %>
+<div class="row">
+    <div class="col" style="padding-bottom: 5px;">
+        <%= f.hidden_field :category_id, placeholder: "Category ID", value: @category_name.id , style: "min-width: 300px" %>
+        <%= f.text_field :words, placeholder: "Word", style: "min-width: 300px" %>
+    </div>
+</div>
+
+<%= f.fields_for :choices do |g| %>
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xl-7 text-right">
+                    <%= g.text_field :choices, placeholder: "Choices", style: "max-width: 250px" %>
+                    <%= g.hidden_field :id %>
+                    <%= g.hidden_field :word_id %>
+                </div>
+                <div class="col-xl-4 text-left">
+                    <div class="form-check">
+                        <%= g.check_box :correct_ans %>
+                        <label class="form-check-label" for="formCheck-1">Is Correct Answer?</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+<div class="row">
+    <div class="col-xl-12 offset-xl-0" style="padding-bottom: 5px;">
+        <%= link_to "Cancel", categories_path,class: "btn btn-outline-danger", style: "margin-right: 15px;" %>
+        <%= f.submit "Submit", class: "btn btn-outline-success", style: "margin-left: 15px;" %>
+</div>
+<% end %>
