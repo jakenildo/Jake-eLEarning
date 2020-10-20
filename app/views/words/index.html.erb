@@ -31,7 +31,13 @@
                                                 <% @words.each do |wrd| %>
                                                 <tr>
                                                     <td> <%=  link_to wrd.words, wrd %> </td>
-                                                    <td> </td>
+                                                    <td> 
+                                                    <% for choice in wrd.choices %>
+                                                        <%if choice.correct_ans == true  %>
+                                                            <%= choice.choices %>
+                                                        <%end %>
+                                                    <% end %>
+                                                    </td>
                                                     <td>
                                                         <%= link_to raw("<i class='fa fa-pen'></i>  Edit"), edit_word_path(wrd), class: "btn btn-outline-primary" %>
                                                         <%= link_to raw("<i class='fa fa-trash'></i> Delete"), word_path(wrd), class: "btn btn-outline-danger", method: :delete, data: { confirm: "You sure?" } %>
