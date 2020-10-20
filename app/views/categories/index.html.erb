@@ -30,7 +30,9 @@
                                         <tr>
                                             <td> <%=  link_to b.title, categ_words_url(b.id) %></td>
                                             <td> <%=  b.description %></td>
-                                            <td>4</td>
+                                            <td> 
+                                                <%= @counter = Word.where(category_id: b.id).count %>
+                                            </td>
                                             <td>
                                                 <%= link_to raw("<i class='fa fa-pen'></i>  Edit"), edit_category_path(b), class: "btn btn-outline-primary" %>
                                             </td>
