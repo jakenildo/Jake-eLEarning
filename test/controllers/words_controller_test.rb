@@ -1,28 +1,28 @@
 require 'test_helper'
 
-class CategoryControllerTest < ActionDispatch::IntegrationTest
+class WordsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get category_index_url
+    get words_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get category_show_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get category_new_url
+    get words_show_url
     assert_response :success
   end
 
   test "should get edit" do
-    get category_edit_url
+    get words_edit_url
+    assert_response :success
+  end
+
+  test "should get update" do
+    get words_update_url
     assert_response :success
   end
 
   test "should get delete" do
-    get category_delete_url
+    get words_delete_url
     assert_response :success
   end
 

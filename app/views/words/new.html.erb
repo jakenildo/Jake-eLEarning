@@ -1,0 +1,24 @@
+<% provide(:title, "Add new words to #{@category_name.title} ") %>
+<div class="container">
+    <div class="row">
+        <div class="col" style="padding-top: 2px;">
+            <div class="card" style="min-width: 400;max-width: 400;">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-xl-8 offset-xl-2">
+                            <div class="card"></div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fa fa-plus" style="padding-right: 5px;"></i> Add New Word &amp; Choices</h5>
+                                </div>
+                                <div class="card-body">
+                                    <%= render ('form')%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
