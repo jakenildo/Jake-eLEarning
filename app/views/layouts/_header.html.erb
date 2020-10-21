@@ -8,14 +8,14 @@
                 <a class="login" href="#"><i class="fa fa-home"></i> Dashboard</a>
             </span>
             <span class="navbar-text actions">
-                <a class="login" href="#"><i class="fa fa-book"></i> Lessons</a>
+                <%= link_to raw("<i class='fa fa-book'></i>  Lessons"), lessons_path, class: "login" %>
             </span>
             <span class="navbar-text actions">
                 <%= link_to raw("<i class='fa fa-users'></i>  Members"), members_path, class: "login" %>
             </span>
             <% if current_user.account_type == 1 %>
             <span class="navbar-text actions">
-                <%= link_to raw("<i class='fa fa-user-tie'></i>  Admin"), lessons_path, class: "login" %>
+                <%= link_to raw("<i class='fa fa-user-tie'></i>  Admin"), admin_path, class: "login" %>
             </span>
             <% end %>
                 <div class="dropdown">

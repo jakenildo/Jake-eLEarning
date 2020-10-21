@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lessons
   resources :words
   resources :users
   resources :categories
@@ -19,11 +20,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/lessons', to: 'categories#index'
+  get '/admin', to: 'categories#index'
   get '/new_lesson', to: 'categories#new'
 
   get '/categories/:category_id/words', to: 'words#index', :as => :categ_words
   get '/categories/:category_id/words/new', to: 'words#new', :as => :new_categ_words
-
+  get '/lessons', to: 'lessons#index'
+  get '/lessons/:category_id/lesson_words/', to: 'lessons#show', :as => :learn_lesson
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
