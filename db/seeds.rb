@@ -66,17 +66,3 @@ cats = Category.order(:created_at).take(3)
         ) }
     
 end
-
-# choices = Word.order(:created_at).take(12)
-
-# choice = Faker::Esport.player
-# correct = 1
-# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
-
-# choice = Faker::Esport.player
-# correct = 0
-# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
-
-# choice = Faker::Esport.player
-# correct = 0
-# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
