@@ -36,21 +36,47 @@ end
 
 cats = Category.order(:created_at).take(3)
 
-4.times do
+5.times do
     word = Faker::Esport.team
-    cats.each { |wrd| wrd.words.create!(words:word) }
+    choice1 = Faker::Esport.player
+    choice2 = Faker::Esport.player
+    choice3 = Faker::Esport.player
+    ct = 1
+    nc = 0
+    cats.each { |wrd| wrd.words.create!(
+        words:word,
+        :choices_attributes => 
+        {
+            0 =>{
+                choices: choice1,
+                correct_ans: ct
+            },
+
+            1 =>{
+                choices: choice2,
+                correct_ans: nc
+            },
+
+            2 =>{
+                choices: choice3,
+                correct_ans: nc
+            }
+        }
+        
+        ) }
+    
 end
 
-choices = Word.order(:created_at).take(12)
+# choices = Word.order(:created_at).take(12)
 
-choice = Faker::Esport.player
-correct = 1
-choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
+# choice = Faker::Esport.player
+# correct = 1
+# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
 
-choice = Faker::Esport.player
-correct = 0
-choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
+# choice = Faker::Esport.player
+# correct = 0
+# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
 
-choice = Faker::Esport.player
-correct = 0
-choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
+# choice = Faker::Esport.player
+# correct = 0
+# choices.each { |ch| ch.choices.create!(choices:choice, correct_ans: correct) }
