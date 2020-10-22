@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     @answers = Answer.new(ans_params)
     if @answers.save
       flash[:success] = "Answer Saved!"
-      redirect_to learn_lesson_url(@answers.category_id)
+      redirect_to learn_lesson_url(@answers.lesson_id)
     else
       flash[:warning] = "Failed to Save Answer!"
       redirect_to lessons_url
