@@ -1,4 +1,4 @@
-class AnswerController < ApplicationController
+class AnswersController < ApplicationController
   def new
     @answers = Answer.new
     @categories = Category.find(params[:category_id])
