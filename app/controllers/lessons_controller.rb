@@ -15,12 +15,6 @@ class LessonsController < ApplicationController
     end
   end
 
-  def show
-    @answers = Answer.new
-    @categories = Category.find(params[:category_id])
-    @words = Word.where(category_id: params[:category_id])
-  end
-
   private
   def lesson_params
     params.require(:lesson).permit(:user_id, :category_id)
