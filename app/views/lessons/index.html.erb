@@ -1,0 +1,71 @@
+<% provide(:title, "Lessons ") %><div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-3">
+                            <%= gravatar_for current_user %>
+                            </div>
+                            <div class="col">
+                                <h4><%= current_user.name%></h4>
+                                <h5>Words Learned: &lt;number&gt;</h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="text-center">Followers:<br />15</h6>
+                                    </div>
+                                    <div class="col">
+                                        <h6 class="text-center">Following:<br />10</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> Lessons</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row" style="padding-top: 15px;">
+                                    <div class="col">
+                                        <div class="card-deck">
+
+                                        <% @lessons.each do |b| %>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                <%= form_for(@lesson_info) do |f| %>
+                                                    <h4 class="card-title text-center"><%= b.title %></h4>
+                                                    <p class="card-text text-center"><%= b.description %> </p>
+                                                    <%= f.hidden_field :user_id, placeholder: "User_id", style: "min-width: 20px", value: current_user.id %>
+                                                    <%= f.hidden_field :category_id, placeholder: "Category_id", style: "min-width: 20px", value: b.id %>
+                                                    <div class="col d-flex justify-content-center">
+                                                    <% if @counter = Word.where(category_id: b.id).count != 0 %>
+                                                        <%= f.submit "Learn", class: "btn btn-outline-info"  %>
+                                                    <% end %>
+                                                    </div>
+                                                <% end %>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 15px;">
+                                    <div class="col d-flex justify-content-center">
+                                        <%= will_paginate %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
