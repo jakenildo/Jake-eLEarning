@@ -28,7 +28,7 @@
             <div class="col-md-6 col-xl-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @categories.title%> - <%= @words.current_page %> out of <%= @words.total_pages %> </h5>
+                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @categories.title%> - <%= page_entries_info @words %></h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -58,6 +58,11 @@
                                                         <% end %>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-top: 15px;">
+                                                <div class="col d-flex justify-content-center">
+                                                    <%= will_paginate @words %>
                                                 </div>
                                             </div>
                                         </div>

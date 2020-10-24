@@ -35,7 +35,7 @@
                                 <div class="row" style="padding-top: 15px;">
                                     <div class="col">
                                         <div class="card-deck">
-                                        <% @lessons.each do |b| %>
+                                        <% @categories.each do |b| %>
                                             <div class="card">
                                                 <div class="card-body">
                                                 <%= form_for(@lesson_info) do |f| %>
@@ -43,9 +43,14 @@
                                                     <p class="card-text text-center"><%= b.description %> </p>
                                                     <%= f.hidden_field :user_id, placeholder: "User_id", style: "min-width: 20px", value: current_user.id %>
                                                     <%= f.hidden_field :category_id, placeholder: "Category_id", style: "min-width: 20px", value: b.id %>
+                                                    <%= f.hidden_field :status, placeholder: "Status", style: "min-width: 20px", value: 0 %>
                                                     <div class="col d-flex justify-content-center">
                                                     <% if @counter = Word.where(category_id: b.id).count != 0 %>
-                                                        <%= f.submit "Learn", class: "btn btn-outline-info"  %>
+                                                        <% if @learned = Lesson.where(user_id: current_user.id, category_id: b.id, status: 2).count != 0 %>
+                                                            <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(b.id ,@user_learned.ids) , class: "btn btn-outline-primary"  %>
+                                                        <% else %>
+                                                            <%= f.submit "Learn", class: "btn btn-outline-info"  %>
+                                                        <% end %>
                                                     <% end %>
                                                     </div>
                                                 <% end %>
@@ -57,7 +62,7 @@
                                 </div>
                                 <div class="row" style="padding-top: 15px;">
                                     <div class="col d-flex justify-content-center">
-                                        <%= will_paginate %>
+                                        <%= will_paginate @categories %>
                                     </div>
                                 </div>
                             </div>

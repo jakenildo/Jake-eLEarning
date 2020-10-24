@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   def new
-    @lessons = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
+    @categories = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @lesson_info = Lesson.new
   end
 
@@ -17,7 +17,6 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit(:user_id, :category_id)
+    params.require(:lesson).permit(:user_id, :category_id, :status)
   end
-
 end

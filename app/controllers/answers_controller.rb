@@ -8,14 +8,27 @@ class AnswersController < ApplicationController
 
   def create
     @answers = Answer.new(ans_params)
-    @less_id = Lesson.where(category_id: params[:category_id], user_id: current_user.id)
-    if @answers.save
-      flash[:success] = "Answer Saved!"
+    @check = Answer.where(lesson_id: @answers.lesson_id, word_id: @answers.word_id)
+    if @check.exists?
+      flash[:warning] = "Answer already exists!"
       redirect_back(fallback_location: root_path)
     else
-      flash[:warning] = "Failed to Save Answer!"
-      redirect_to lessons_url
+      if @answers.save
+        flash[:success] = "Answer Saved!"
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:warning] = "Failed to Save Answer!"
+        redirect_back(fallback_location: root_path)
+      end
     end
+  end
+
+  def show
+    @categories = Category.find(params[:category_id])
+    @ans = Answer.where(lesson_id: params[:lesson_id])
+    @choices = Choice.all
+    @words = Word.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 10)
+    @correct_ans = Choice.where(correct_ans: true)
   end
 
   private
