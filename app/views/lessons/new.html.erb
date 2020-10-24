@@ -46,7 +46,7 @@
                                                     <%= f.hidden_field :status, placeholder: "Status", style: "min-width: 20px", value: 0 %>
                                                     <div class="col d-flex justify-content-center">
                                                     <% if @counter = Word.where(category_id: b.id).count != 0 %>
-                                                        <% if @learned = Lesson.where(user_id: current_user.id, category_id: b.id, status: 2).count != 0 %>
+                                                        <% if @learned = Lesson.where(user_id: current_user.id, category_id: b.id, status: 1)  == b.id %>
                                                             <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(b.id ,@user_learned.ids) , class: "btn btn-outline-primary"  %>
                                                         <% else %>
                                                             <%= f.submit "Learn", class: "btn btn-outline-info"  %>

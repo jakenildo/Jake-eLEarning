@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
 
   def create
     @answers = Answer.new(ans_params)
-    @check = Answer.where(lesson_id: @answers.lesson_id, word_id: @answers.word_id)
+    @check = Answer.where(lesson_id: @answers.lesson_id, word_id: @answers.word_id) #checks if the word_id & lesson_id exists, used to avoid dupes
     if @check.exists?
       flash[:warning] = "Answer already exists!"
       redirect_back(fallback_location: root_path)

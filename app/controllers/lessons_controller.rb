@@ -2,6 +2,8 @@ class LessonsController < ApplicationController
   def new
     @categories = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @lesson_info = Lesson.new
+    @learned = Lesson.where(user_id: current_user.id, status: 1)
+    @not_learned = Lesson.where(user_id: current_user.id, status: 0)
   end
 
   def create

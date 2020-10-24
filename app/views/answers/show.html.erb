@@ -49,18 +49,14 @@
                                                 <%if c.correct_ans == true %>
                                                 <td> <%= wrd.words %> </td>
                                                 <td> <%= c.choices %> </td>
-
-                                                <% @ans.each do |a| %>
-                                                <% @choices.each do |chs| %>
-                                                    <%if chs.id == a.choice_id && wrd.id == a.word_id %>
-                                                        <td> <%= chs.choices %> </td>
-                                                    <%end%>
-                                                <% end %>
-                                                <% end %>
-
+                                                    <% @ans.each do |a| %>
+                                                        <% @choices.each do |chs| %>
+                                                            <%if chs.id == a.choice_id && wrd.id == a.word_id %>
+                                                                <td> <%= chs.choices %> </td>
+                                                            <%end%>
+                                                        <% end %>
+                                                    <% end %>
                                                 <%end%>
-                                                
-                                                
                                             </tr>
                                         <%end%>
                                         <%end%>
