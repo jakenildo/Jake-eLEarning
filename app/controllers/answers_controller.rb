@@ -49,6 +49,7 @@ class AnswersController < ApplicationController
     @choices = Choice.all
     @words = Word.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 10)
     @correct_ans = Choice.where(correct_ans: true)
+    @count = 0
   end
 
   private

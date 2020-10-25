@@ -47,12 +47,18 @@
                                         <% wrd.choices.each do |c| %>
                                             <tr>
                                                 <%if c.correct_ans == true %>
-                                                <td> <%= wrd.words %> </td>
-                                                <td> <%= c.choices %> </td>
+                                                <td> <%= wrd.id %>.)  <%= wrd.words %> </td>
+                                                <td> <%= c.id %>.) <%= c.choices %> </td>
                                                     <% @ans.each do |a| %>
                                                         <% @choices.each do |chs| %>
                                                             <%if chs.id == a.choice_id && wrd.id == a.word_id %>
-                                                                <td> <%= chs.choices %> </td>
+                                                                <td> <%= chs.id %>.) <%= chs.choices %> </td>
+                                                                <%if chs.id == a.choice_id && wrd.id == a.word_id && a.choice_id == c.id  %>
+                                                                <% @count += 1 %>
+                                                                <td> <i class="fa fa-check"></i> </td>
+                                                                <%else%>
+                                                                <td> <i class="fa fa-times"></i> </td>
+                                                                <%end%>
                                                             <%end%>
                                                         <% end %>
                                                     <% end %>
@@ -66,7 +72,8 @@
                                 <div class="row">
                                
                                     <div class="col" style="margin-top: 50px;margin-bottom: 25px;">
-                                        <h4 class="text-center">Score <%= @correct_ans.count %> out of <%= @words.count %></h4>
+                                    
+                                        <h4 class="text-center">Score <%= @count %> out of <%= @words.count %></h4>
                                     </div>
                                 </div>
                             </div>
