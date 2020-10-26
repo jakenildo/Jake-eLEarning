@@ -54,10 +54,10 @@
                                                             <%if chs.id == a.choice_id && wrd.id == a.word_id %>
                                                                 <td> <%= chs.id %>.) <%= chs.choices %> </td>
                                                                 <%if chs.id == a.choice_id && wrd.id == a.word_id && a.choice_id == c.id  %>
-                                                                <% @count += 1 %>
-                                                                <td> <i class="fa fa-check"></i> </td>
+                                                                    <% @count += 1 %>
+                                                                    <td> <i class="fa fa-check"></i> </td>
                                                                 <%else%>
-                                                                <td> <i class="fa fa-times"></i> </td>
+                                                                    <td> <i class="fa fa-times"></i> </td>
                                                                 <%end%>
                                                             <%end%>
                                                         <% end %>

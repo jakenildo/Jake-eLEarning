@@ -25,8 +25,6 @@ class AnswersController < ApplicationController
     else
       if @answers.save
         flash[:success] = "Answer Saved!"
-        @total = Word.where(category_id: params[:category_id])
-        @check = Answer.where(word_id: @total.ids)
         redirect_back(fallback_location: root_path)
       else
         flash[:warning] = "Failed to Save Answer!"
