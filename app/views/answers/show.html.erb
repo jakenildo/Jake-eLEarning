@@ -43,29 +43,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <% @words.each do |wrd| %>
-                                        <% wrd.choices.each do |c| %>
-                                            <tr>
-                                                <%if c.correct_ans == true %>
-                                                <td> <%= wrd.id %>.)  <%= wrd.words %> </td>
-                                                <td> <%= c.id %>.) <%= c.choices %> </td>
-                                                    <% @ans.each do |a| %>
-                                                        <% @choices.each do |chs| %>
-                                                            <%if chs.id == a.choice_id && wrd.id == a.word_id %>
-                                                                <td> <%= chs.id %>.) <%= chs.choices %> </td>
-                                                                <%if chs.id == a.choice_id && wrd.id == a.word_id && a.choice_id == c.id  %>
-                                                                    <% @count += 1 %>
-                                                                    <td> <i class="fa fa-check"></i> </td>
-                                                                <%else%>
-                                                                    <td> <i class="fa fa-times"></i> </td>
-                                                                <%end%>
-                                                            <%end%>
-                                                        <% end %>
-                                                    <% end %>
+                                            <% @words.each do |wrd| %>
+                                                <% wrd.choices.each do |c| %>
+                                                    <tr>
+                                                        <%if c.correct_ans == true %>
+                                                        <td> <%= wrd.id %>.)  <%= wrd.words %> </td>
+                                                        <td> <%= c.id %>.) <%= c.choices %> </td>
+                                                            <% @ans.each do |a| %>
+                                                                <% @choices.each do |chs| %>
+                                                                    <%if chs.id == a.choice_id && wrd.id == a.word_id %>
+                                                                        <td> <%= chs.id %>.) <%= chs.choices %> </td>
+                                                                        <%if chs.id == a.choice_id && wrd.id == a.word_id && a.choice_id == c.id  %>
+                                                                            <% @count += 1 %>
+                                                                            <td> <i class="fa fa-check"></i> </td>
+                                                                        <%else%>
+                                                                            <td> <i class="fa fa-times"></i> </td>
+                                                                        <%end%>
+                                                                    <%end%>
+                                                                <% end %>
+                                                            <% end %>
+                                                        <%end%>
+                                                    </tr>
                                                 <%end%>
-                                            </tr>
-                                        <%end%>
-                                        <%end%>
+                                            <%end%>
                                         </tbody>
                                     </table>
                                 </div>
