@@ -46,15 +46,11 @@
                                                         <%= f.hidden_field :status, placeholder: "Status", style: "min-width: 20px", value: 0 %>
                                                         <div class="col d-flex justify-content-center">
                                                             <% if @counter = Word.where(category_id: b.id).count != 0 %>
-                                                                <% if @learned.exists? %>
-                                                                    <% @lesson1 = Lesson.where(category_id: b.id).exists? %>
-                                                                    <% if @lesson1 == true %>
-                                                                        <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(b.id) , class: "btn btn-outline-primary"  %>
-                                                                    <% end %>
-                                                                    <% @lesson2 = Lesson.where(category_id: b.id).exists? %>
-                                                                    <% if @lesson2 == false %>
-                                                                        <%= f.submit "Learn", class: "btn btn-outline-info"  %>
-                                                                    <% end %>
+                                                                <% @lesson1 = Lesson.where(category_id: b.id).exists? %>
+                                                                <% if @lesson1 == true %>
+                                                                    <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(b.id) , class: "btn btn-outline-primary"  %>
+                                                                <% else %>
+                                                                    <%= f.submit "Learn", class: "btn btn-outline-info"  %>
                                                                 <% end %>
                                                             <% end %>
                                                         </div>
