@@ -31,3 +31,15 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Displaying 1 %{model}"
+        other: "Showing all %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} found"
+        one:   "Displaying <b>1</b> %{model}"
+        other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
+      multi_page: "Showing %{model} %{from} - %{to} out of %{count} in total"
+      multi_page_html: "%{model} <b>%{from}</b> out of <b>%{count}</b>"

@@ -1,7 +1,8 @@
 class LessonsController < ApplicationController
-  def index
-    @lessons = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
+  def new
+    @categories = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @lesson_info = Lesson.new
+    @lesson = Lesson.where(user_id: current_user.id)
   end
 
   def create
@@ -15,16 +16,8 @@ class LessonsController < ApplicationController
     end
   end
 
-  def show
-    @cat_id = params[:category_id]
-    @lesson = Lesson.new
-    @categories = Category.find(params[:category_id])
-    @words = Word.where(category_id: params[:category_id])
-  end
-
   private
   def lesson_params
-    params.require(:lesson).permit(:user_id, :category_id)
+    params.require(:lesson).permit(:user_id, :category_id, :status)
   end
-
 end

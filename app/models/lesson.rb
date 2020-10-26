@@ -1,5 +1,5 @@
 class Lesson < ApplicationRecord
-  has_many :users
-  has_many :categories
-    
+  has_one :users
+  has_many :category
+  has_many :answers
 end
