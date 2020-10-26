@@ -13,29 +13,21 @@ class AnswersController < ApplicationController
     if @check.exists?
       flash[:warning] = "Answer already exists!"
       @total = Word.where(id: @answers.word_id)
-      @check = Answer.where(word_id: @total.ids).count
-        if @check == @total.count
+      @check = Answer.where(word_id: @total.ids)
+        if @check.count == @total.count
           if @lesson.update_attribute(:status,1)
-            redirect_back(fallback_location: root_path)
+            view_result_url(@lesson.category_id)
           else
             flash[:warning] = "Lesson Update Failed!"
             redirect_back(fallback_location: root_path)
           end
         end
-      redirect_back(fallback_location: root_path)
     else
       if @answers.save
         flash[:success] = "Answer Saved!"
         @total = Word.where(category_id: params[:category_id])
         @check = Answer.where(word_id: @total.ids)
-          if @check.count == @total.count
-            if @lesson.update_attribute(:status,1)
-              redirect_back(fallback_location: root_path)
-            else
-              flash[:warning] = "Lesson Update Failed!"
-              redirect_back(fallback_location: root_path)
-            end
-          end
+        redirect_back(fallback_location: root_path)
       else
         flash[:warning] = "Failed to Save Answer!"
         redirect_back(fallback_location: root_path)
@@ -45,7 +37,8 @@ class AnswersController < ApplicationController
 
   def show
     @categories = Category.find(params[:category_id])
-    @ans = Answer.where(lesson_id: params[:lesson_id])
+    @lesson = Lesson.where(user_id: current_user.id, category_id: params[:category_id], status: 1)
+    @ans = Answer.where(lesson_id: @lesson.ids)
     @choices = Choice.all
     @words = Word.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 10)
     @correct_ans = Choice.where(correct_ans: true)

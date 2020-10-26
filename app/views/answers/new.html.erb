@@ -46,7 +46,7 @@
                                                         <%= form_for(@answers) do |f| %>
                                                             <% wrd.choices.each do |c|%>
                                                                 <div class="form-check">
-                                                                    <%= f.radio_button :choice_id, c.id %>
+                                                                    <%= f.radio_button :choice_id, c.id , required: 'required' %>
                                                                     <%= f.hidden_field :lesson_id, value: @lesson_id.ids %> 
                                                                     <%= f.hidden_field :word_id, value: wrd.id %>
                                                                     <label class="form-check-label" for="formCheck-1"><%= c.choices %> </label>
