@@ -30,18 +30,7 @@
                                                     <h5 class="text-center">Words Learned: [num]</h5>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <small>
-                                                        <a href= "<%= followers_user_path(@user) %>">Followers:   <%= @user.followers.count %> </a>
-                                                    </small>
-                                                </div>
-                                                <div class="col">
-                                                    <small>
-                                                        <a href= "<%= following_user_path(@user) %>">Following: <%= @user.followed_users.count %> </a>
-                                                    </small>
-                                                </div>
-                                            </div>
+                                            <%= render 'shared/stats'%>
                                         </div>
                                     </div>
                                 </div>

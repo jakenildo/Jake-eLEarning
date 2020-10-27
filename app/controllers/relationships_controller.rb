@@ -4,7 +4,7 @@ before_action :only_loggedin_users
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
     respond_to do |format|
-      format.html { redirect_to @users }
+      format.html { redirect_to @user }
       format.js
     end
   end
@@ -13,7 +13,7 @@ before_action :only_loggedin_users
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
     respond_to do |format|
-      format.html { redirect_to @users }
+      format.html { redirect_to @user }
       format.js
     end
   end
