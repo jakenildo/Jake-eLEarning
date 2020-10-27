@@ -30,8 +30,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col"><small>Followers: [number]</small></div>
-                                                <div class="col"><small>Following: [Number]</small></div>
+                                                <div class="col"><small>Followers:  <%= @user.followers.count %></small></div>
+                                                <div class="col"><small>Following: <%= @user.followed_users.count %></small></div>
                                             </div>
                                         </div>
                                     </div>

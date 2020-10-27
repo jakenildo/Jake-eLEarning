@@ -2,11 +2,17 @@ Rails.application.routes.draw do
   resources :answers
   resources :lessons
   resources :words
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :categories
   resources :sessions, only: [:new, :create,:destroy]
 
   resources :make_admin, only: [:show, :edit]
+
+  resources :relationships, only: [:create, :destroy]
 
   root 'static_pages#home'
   
