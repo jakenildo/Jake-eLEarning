@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
   def new
+    @user = User.find(current_user.id) #for the user stats
+    @learned_lesson = Lesson.where(user_id: current_user.id, status: 1).count #for the user stats
     @categories = Category.paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @lesson_info = Lesson.new
     @lesson = Lesson.where(user_id: current_user.id)

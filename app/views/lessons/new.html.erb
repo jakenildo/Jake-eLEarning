@@ -1,29 +1,7 @@
 <% provide(:title, "Lessons ") %><div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-3">
-                            <%= gravatar_for current_user %>
-                            </div>
-                            <div class="col">
-                                <h4><%= current_user.name%></h4>
-                                <h5>Words Learned: &lt;number&gt;</h5>
-                                <div class="row">
-                                    <div class="col">
-                                        <h6 class="text-center">Followers:<br />15</h6>
-                                    </div>
-                                    <div class="col">
-                                        <h6 class="text-center">Following:<br />10</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%= render'shared/info_card' %>
             <div class="col-md-6 col-xl-8">
                 <div class="card">
                     <div class="card-header">
