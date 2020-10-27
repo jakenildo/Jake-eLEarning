@@ -12,27 +12,14 @@
                     <div class="col">
                         <div class="row" style="padding-top: 15px;">
                             <% if @users.any? %>
-                                <table class="table table-striped">
-                                    <thead class="text-centered">
-                                        <tr>
-                                            <th>Action</th>
-                                            <th>Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% @users.each do |user| %>
-                                        <tr>
-                                            <td> <%= render 'follow_form' if logged_in? %></td>
-                                            <td> <%= render user %></td>
-                                        </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
+                                <% @users.each do |user| %>
+                                    <%= render user %>
+                                <% end %>
                             <% end %>
                         </div>
                         <div class="row" style="padding-top: 15px;">
                             <div class="col d-flex justify-content-center">
-                                <%= will_paginate%>
+                                <%= will_paginate %>
                             </div>
                         </div>
                     </div>

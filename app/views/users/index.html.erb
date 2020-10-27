@@ -16,7 +16,6 @@
                                         <table class="table table-striped">
                                             <thead class="text-centered">
                                                 <tr>
-                                                    <th>Follow</th>
                                                     <th>Name</th>
                                                     <%if current_user.account_type == 1%>
                                                     <th>Actions</th>
@@ -26,7 +25,6 @@
                                             <tbody>
                                                 <% @users.each do |b| %>
                                                 <tr>
-                                                    <td> <%= render 'follow_form' if logged_in? %></td>
                                                     <td> <%= gravatar_for b, size:20 %> 
                                                     <%=  link_to b.name, b %></td>
                                                     <%if current_user.account_type == 1%>

@@ -1,10 +1,10 @@
 class RelationshipsController < ApplicationController
-before_action :only_logged_in_users
+before_action :only_loggedin_users
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to @users }
       format.js
     end
   end
@@ -13,7 +13,9 @@ before_action :only_logged_in_users
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to @users }
       format.js
+    end
   end
+
 end
