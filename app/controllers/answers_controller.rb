@@ -40,6 +40,7 @@ class AnswersController < ApplicationController
 
   def show
     #let show auto update the status of the lesson
+    @lesson = Lesson.where(user_id: current_user.id, category_id: params[:category_id])
     @total_words = Word.where(category_id: params[:category_id]).count
     @curr_answers = Answer.where(lesson_id: @lesson.ids).count
     if @curr_answers == @total_words #checks if the current answers are the same numbers with words
@@ -48,7 +49,6 @@ class AnswersController < ApplicationController
     @user = User.find(current_user.id) #for the user stats
     @learned_lesson = Lesson.where(user_id: current_user.id, status: 1).count #for the user stats
     @categories = Category.find(params[:category_id])
-    @lesson = Lesson.where(user_id: current_user.id, category_id: params[:category_id])
     @ans = Answer.where(lesson_id: @lesson.ids)
     @choices = Choice.all
     @words = Word.where(category_id: params[:category_id])
