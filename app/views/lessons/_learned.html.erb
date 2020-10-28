@@ -1,0 +1,22 @@
+<div class="row" style="padding-top: 15px;">
+    <div class="col">
+        <div class="card-deck">
+            <% @learned.each do |b| %>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center"><%= b.title %></h4>
+                        <p class="card-text text-center"><%= b.description %> </p>
+                        <div class="col d-flex justify-content-center">
+                            <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(b.id) , class: "btn btn-outline-primary" %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top: 15px;">
+    <div class="col d-flex justify-content-center">
+        <%= will_paginate @learned %>
+    </div>
+</div>
