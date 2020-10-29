@@ -1,4 +1,26 @@
 <% provide(:title, "Home") %>
+
+<% if logged_in? %>
+<div>
+    <div class="container">
+        <div class="row">
+            <%= render'shared/info_card' %>
+            <div class="col-md-6 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fa fa-feed" style="padding-right: 5px;"></i> Activity Feed</h5>
+                    </div>
+                    <div class="card-body">
+                        <%= render 'shared/activities'%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% else %>
+
 <div class="container">
     <div class="row body">
         <div class="col">
@@ -11,3 +33,5 @@
         </div>
     </div>
 </div>
+
+<% end %>
