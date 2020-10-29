@@ -5,7 +5,7 @@
             id="navcol-1">
             <ul class="nav navbar-nav mr-auto"></ul>
             <span class="navbar-text actions">
-                <a class="login" href="#"><i class="fa fa-home"></i> Dashboard</a>
+                <%= link_to raw("<i class='fa fa-home'></i>  Dashboard"), root_url, class: "login" %>
             </span>
             <span class="navbar-text actions">
                 <%= link_to raw("<i class='fa fa-book'></i>  Lessons"), new_lesson_path, class: "login" %>

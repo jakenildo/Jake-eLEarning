@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         user.authenticate(params[:session][:password])
         log_in user
         flash[:success] = "Welcome back! (^_^) "
-        redirect_to user
+        redirect_to root_url
       else
         flash[:danger] = "Login failed (X_X) "
         render 'new'
