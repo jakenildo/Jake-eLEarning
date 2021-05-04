@@ -12,11 +12,11 @@ class LessonsController < ApplicationController
                     .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @not_learned = Category.joins("LEFT OUTER JOIN lessons ON categories.id = lessons.category_id LEFT OUTER JOIN words ON words.category_id = categories.id")
                     .select("distinct(categories.title), categories.description, categories.id, categories.created_at, categories.updated_at")
-                    .where("isnull(lessons.id) AND !isnull(words.id)")
+                    .where("(lessons.id = null) AND (words.id != null)")
                     .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
     @coming = Category.joins("LEFT OUTER JOIN lessons ON categories.id = lessons.category_id LEFT OUTER JOIN words ON words.category_id = categories.id")
                       .select("categories.*")
-                      .where("isnull(lessons.id) AND isnull(words.id)")
+                      .where("(lessons.id = null) AND (words.id = null)")
                       .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
                                     
   end
