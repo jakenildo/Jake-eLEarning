@@ -52,7 +52,7 @@ class WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit(:category_id,:words, choices_attributes: [:id, :word_id, :choices, :correct_ans])
+    params.require(:word).permit(:category.save_id,:words, choices_attributes: [:id, :word_id, :choices, :correct_ans])
   end
   
 end

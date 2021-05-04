@@ -6,7 +6,7 @@
             <div class="col-md-6 col-xl-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @categories.title%> - <%= page_entries_info @words %></h5>
+                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @categories.title%> -</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -14,7 +14,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                     <% @words.each do |wrd| %>
-                                        <h5 class="text-center mb-0"> <%= @words.current_page %>.) <%= wrd.words %></h5>
+                                        <h5 class="text-center mb-0"> <%= @answer_counter+1 %>.) <%= wrd.words %></h5>
                                     </div>
                                         <div class="card-body">
                                             <div class="row">
@@ -25,7 +25,7 @@
                                                             <% wrd.choices.each do |c|%>
                                                                 <div class="form-check">
                                                                     <%= f.radio_button :choice_id, c.id , required: 'required' %>
-                                                                    <%= f.hidden_field :lesson_id, value: @lesson_id.ids %> 
+                                                                    <%= f.hidden_field :lesson_id, value: @lesson_id %> 
                                                                     <%= f.hidden_field :word_id, value: wrd.id %>
                                                                     <label class="form-check-label" for="formCheck-1"><%= c.choices %> </label>
                                                                 </div>
@@ -40,14 +40,6 @@
                                             </div>
                                             <div class="row" style="padding-top: 15px;">
                                                 <div class="col d-flex justify-content-center">
-                                                    <% if @curr_answers == @total_words %>
-                                                        <%= link_to raw("<i class='fa fa-eye'></i> View Results"), view_result_url(@categories.id) , class: "btn btn-outline-primary" %>
-                                                    <% end %>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="padding-top: 15px;">
-                                                <div class="col d-flex justify-content-center">
-                                                    <%= will_paginate @words %>
                                                 </div>
                                             </div>
                                         </div>

@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lesson = Lesson.where(user_id: params[:id])
+    @learned_lesson = Lesson.where(user_id: current_user.id, status: 1).count
     @activity = Activity.where(user_id: params[:id])
     @relationship = Relationship.where(follow_id: params[:id])
   end
