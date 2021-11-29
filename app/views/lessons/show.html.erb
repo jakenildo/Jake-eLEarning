@@ -1,0 +1,70 @@
+<% provide(:title, "Learning #{@answers[0].lesson.category.title} Words ") %><div>
+<div>
+    <div class="container">
+        <div class="row">
+            <%= render'shared/info_card' %>
+            <div class="col-md-6 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @answers[0].lesson.category.title%> - Result</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead class="text-info">
+                                            <tr>
+                                                <th>Word</th>
+                                                <th>Answer</th>
+                                                <th colspan="2">Your Answer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% @answers.each do |word| %>
+                                                <tr>
+                                                    <td> <%= word.word.words %> </td>
+                                                    <td>
+                                                        <% word.word.choices.each do |correct|%>
+                                                            <% if correct.correct_ans %>
+                                                                <%= correct.choices %>
+                                                            <% end %>
+                                                        <% end %>
+                                                    </td>
+                                                    <td>
+                                                        <%= word.choice.choices %>
+                                                     </td>
+                                                     <td>
+                                                        <% word.word.choices.each do |correct| %>
+                                                            <% if word.choice.correct_ans == correct.correct_ans %>
+                                                                <i class="fa fa-check"></i>
+                                                                <% break %>
+                                                            <% else %>
+                                                                <i class="fa fa-times"></i>
+                                                                <% break %>
+                                                            <% end %>
+                                                        <% end %>
+                                                     </td>
+                                                </tr>
+                                            <%end%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col my-5" >
+                                        <h4 class="text-center">Score <%= check_score(params[:id]) %> out of <%= @answers.count %></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-xl-flex justify-content-xl-center">
+                                <%= link_to raw("<i class='fa fa-arrow-circle-left'></i> Back to Lessons"), lessons_path,class: "btn btn-outline-primary"%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

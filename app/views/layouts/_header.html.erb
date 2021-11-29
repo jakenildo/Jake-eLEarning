@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container"><a class="navbar-brand" href="#">Word Choice</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><%= link_to raw("Word Choice"), root_url, class: "navbar-brand" %><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
             id="navcol-1">
             <ul class="nav navbar-nav mr-auto"></ul>
@@ -8,7 +8,7 @@
                 <%= link_to raw("<i class='fa fa-home'></i>  Dashboard"), root_url, class: "login" %>
             </span>
             <span class="navbar-text actions">
-                <%= link_to raw("<i class='fa fa-book'></i>  Lessons"), new_lesson_path, class: "login" %>
+                <%= link_to raw("<i class='fa fa-book'></i>  Lessons"), lessons_path, class: "login" %>
             </span>
             <span class="navbar-text actions">
                 <%= link_to raw("<i class='fa fa-users'></i>  Members"), members_path, class: "login" %>
@@ -19,11 +19,13 @@
             </span>
             <% end %>
                 <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fa fa-user-circle"></i> Profile</a>
-                    <div class="dropdown-menu" role="menu">
-                    <%= link_to raw("<i class='fa fa-user-circle'></i>  Profile"), current_user, class: "dropdown-item" %>
-                    <%= link_to raw("<i class='fa fa-cogs'></i>  Settings"), edit_user_path(current_user), class: "dropdown-item" %>
-                    <%= link_to raw("<i class='fa fa-sign-out-alt'></i>  Logout"), logout_path, class: "dropdown-item", method: :delete %>
+                    <span class="navbar-text actions">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fa fa-user-circle"></i> Profile</a>
+                        <div class="dropdown-menu" role="menu">
+                        <%= link_to raw("<i class='fa fa-user-circle'></i>  Profile"), current_user, class: "dropdown-item" %>
+                        <%= link_to raw("<i class='fa fa-cogs'></i>  Settings"), edit_user_path(current_user), class: "dropdown-item" %>
+                        <%= link_to raw("<i class='fa fa-sign-out-alt'></i>  Logout"), logout_path, class: "dropdown-item", method: :delete %>
+                    </span>
                 </div>
         </div>
     </div>

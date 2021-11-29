@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = "Sign-up Success!"
       redirect_to login_url
     else
-      flash[:warning] = "Sign-up Failed"
+      flash[:warning] = @user.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -27,10 +27,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    # @users = User.all
-
-    @users = User.paginate(page:
-      params[:page], per_page: 10 )
+    @users = User.paginate(page: params[:page], per_page: 10 )
   end
 
   def edit
@@ -43,7 +40,7 @@ class UsersController < ApplicationController
       flash[:success] = "Info Updated!"
       redirect_to @user
     else
-      flash[:warning] = "Update Failed!"
+      flash[:warning] = @user.errors.full_messages.to_sentence
       render 'edit'
     end
   end

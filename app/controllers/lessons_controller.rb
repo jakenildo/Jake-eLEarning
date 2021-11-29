@@ -1,44 +1,50 @@
 class LessonsController < ApplicationController
-  def new
-    @user = User.find(current_user.id) #for the user stats
-    @learned_lesson = Lesson.where(user_id: current_user.id, status: 1).count #for the user stats
-    @categories = Category.paginate(page: params[:page], per_page: 2 )
-    @lesson_info = Lesson.new
-    @lesson = Lesson.where(user_id: current_user.id)
-    # @lrnd_less = Lesson.where(user_id: current_user.id, status: 1)
-    @learned = Lesson.joins("JOIN categories ON lessons.category_id = categories.id")
-                    .select("categories.*, lessons.status")
-                    .where(user_id: current_user.id, status:1)
-                    .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
-    @not_learned = Category.joins("LEFT OUTER JOIN lessons ON categories.id = lessons.category_id LEFT OUTER JOIN words ON words.category_id = categories.id")
-                    .select("distinct(categories.title), categories.description, categories.id, categories.created_at, categories.updated_at")
-                    .where("lessons.id IS NULL AND words.id IS NOT NULL")
-                    .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
-    @coming = Category.joins("LEFT OUTER JOIN lessons ON categories.id = lessons.category_id LEFT OUTER JOIN words ON words.category_id = categories.id")
-                      .select("categories.*")
-                      .where("lessons.id IS NULL AND words.id IS NULL")
-                      .paginate(page: params[:page], per_page: 2 ).order('created_at DESC')
-                                    
+  def index
+    @user = current_user
+    @page = params[:filter]
+    if params[:filter] == "Learned"
+      @categories = current_user.categories.where.not(lessons: {result: nil})
+    elsif params[:filter] == "Not Learned"
+      @categories = Category.left_outer_joins(:lessons)
+                          .where.not(id: current_user.lessons
+                          .where.not(lessons: {result: nil}))
+    else
+      @page = "all"
+      @categories = Category.all
+    end
+    @categories = @categories.paginate(page: params[:page]).limit(2)
   end
 
   def create
-    @lesson_info = Lesson.new(lesson_params)
-    if @lesson_info.save
-      flash[:success] = "Lesson Start!"
+    @category = Category.find_by_id(params[:category_id])
+    @lesson = @category.lessons.build(user: current_user)
+    if @category.words.any?
+      @lesson.save
       @action = Activity.create(actionable: Lesson.last, user_id: current_user.id)
-      redirect_to learn_lesson_url(@lesson_info.category_id)
+      redirect_to new_lesson_answer_url(@lesson)
     else
-      flash[:warning] = "Failed to Start Lesson"
+      flash[:danger] = "There are no words in this category yet"
       redirect_to lessons_url
     end
+  end
+
+  def show
+    @user = current_user
+    @answers = Answer.where(lesson_id: params[:id])
+    @correct_answers = 0
+
+      Answer.where(lesson_id: params[:id]).each do |word|
+        word.word.choices.each do |count|
+          if word.choice.correct_ans == count.correct_ans
+            @correct_answers = @correct_answers+=1
+            break
+          end
+        end
+      end
   end
 
   private
   def lesson_params
     params.require(:lesson).permit(:user_id, :category_id, :status)
   end
-
-  # def activity_params
-  #   params.requre(:activity).permit(:user_id)
-  # end
 end

@@ -1,0 +1,82 @@
+<% provide(:title, "Lessons ") %><div>
+    <div class="container">
+        <div class="row">
+            <%= render'shared/info_card' %>
+            <div class="col-md-6 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> Lessons</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row offset-7">
+                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                    <label class="btn btn-primary <%= current_page?("all") %> " >
+                                                        <%= link_to "All" , lessons_path ,class: "text-white"%>
+                                                    </label>
+                                                    <label class="btn btn-primary <%= current_page?("Learned") %> ">
+                                                        <%= link_to "Learned" , lessons_path(filter: "Learned") ,class: "text-white" %>
+                                                    </label>
+                                                    <label class="btn btn-primary <%= current_page?("Not Learned") %> ">
+                                                        <%= link_to "Not Learned" , lessons_path(filter: "Not Learned") ,class: "text-white" %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4 mx-auto">
+                                                <div class="col-12">
+                                                    <div class="row mt-3 d-flex justify-content-center">
+                                                        <div class="card-deck">
+                                                            <div class="col-12">
+                                                                <div class="row">
+                                                                    <% if @categories.empty? %>
+                                                                        <div class="card" style="width: 18rem;">
+                                                                            <div class="card-body">
+                                                                                <div class="text-center">
+                                                                                    <i class="fa fa-exclamation-circle fa-3x text-info "></i>
+                                                                                    <p class="text-info my-3">Nothing to show</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    <% else %>
+                                                                        <% @categories.each do |b| %>
+                                                                            <div class="card" style="width: 18rem;">
+                                                                                <div class="card-body">
+                                                                                    <h4 class="card-title text-center"><%= b.title %></h4>
+                                                                                    <p class="card-text text-center"><%= b.description %> </p>
+                                                                                    <div class="col d-flex justify-content-center">
+                                                                                    <% if check_if_learned(b) == false %>
+                                                                                    <%= link_to "Start", lessons_path(category_id: b.id),method: :post,class: 'btn btn-outline-info' %>
+                                                                                    <% else %>
+                                                                                        <%= link_to raw("<i class='fa fa-eye'></i> View Results"), lesson_path(current_user.lessons.find_by(category_id: b)),class: 'btn btn-outline-primary' %>
+                                                                                    <% end %> 
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        <% end %>
+                                                                    <% end %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-5">
+                                                        <div class="col d-flex justify-content-center">
+                                                            <%= will_paginate @categories %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

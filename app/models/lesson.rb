@@ -1,7 +1,7 @@
 class Lesson < ApplicationRecord
-  has_one :users
-  has_many :category
-  has_many :answers
+  belongs_to :user
+  belongs_to :category
+  has_many :answers, dependent: :destroy
 
   has_many :activity, as: :actionable
 end

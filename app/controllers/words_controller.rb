@@ -17,7 +17,7 @@ class WordsController < ApplicationController
       flash[:success] = "Word & Choices added to Lesson! ^o^/"
       redirect_to categ_words_url(@word.category_id)
     else
-      flash[:danger] = "Failed to insert choice into database :("
+      flash[:danger] = @word.errors.full_messages.to_sentence
       redirect_to categ_words_url(@word.category_id)
     end
   end
@@ -33,7 +33,7 @@ class WordsController < ApplicationController
       flash[:success] = "Word & Choices Updated! ^o^/"
       redirect_to categ_words_url(@word.category_id)
     else
-      flash[:danger] = "Failed to update Word & Choice into database :("
+      flash[:danger] = @word.errors.full_messages.to_sentence
       redirect_to categ_words_url(@word.category_id)
     end
   end
@@ -52,7 +52,7 @@ class WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit(:category.save_id,:words, choices_attributes: [:id, :word_id, :choices, :correct_ans])
+    params.require(:word).permit(:category_id,:words, choices_attributes: [:id, :word_id, :choices, :correct_ans])
   end
   
 end

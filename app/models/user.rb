@@ -25,6 +25,12 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: {minimum: 6}
 
+  has_many :words, dependent: :destroy
+  has_many :choices, dependent: :destroy
+  
+  has_many :lessons, dependent: :destroy
+  has_many :categories, through: :lessons
+
   # returns true if the current user is following the other user
   def following?(other_user)
     active_relationships.find_by(followed_id: other_user.id)

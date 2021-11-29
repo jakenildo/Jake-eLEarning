@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
       flash[:success] = "Added new Lesson!"
       redirect_to categories_path
     else
-      flash[:warning] = "Failed to add Lesson"
+      flash[:warning] = @categories.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
       flash[:success] = "Category Updated! ^o^"
       redirect_to categories_path
     else
-      flash[:warning] = "Update Failed! X_X"
+      flash[:warning] = @categories.errors.full_messages.to_sentence
       render 'edit'
     end
   end

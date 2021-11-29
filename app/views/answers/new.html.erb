@@ -1,49 +1,43 @@
-<% provide(:title, "Learning #{@categories.title} Words ") %><div>
-<div>
-    <div class="container">
-        <div class="row">
-            <%= render'shared/info_card' %>
-            <div class="col-md-6 col-xl-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @categories.title%> -</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header">
-                                    <% @words.each do |wrd| %>
-                                        <h5 class="text-center mb-0"> <%= @answer_counter+1 %>.) <%= wrd.words %></h5>
-                                    </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col offset-xl-3">
-                                                    <div class="card" style="max-width: 300px;margin-bottom: 20px;margin-top: 20px;">
-                                                        <div class="card-body text-center" style="margin: 20px;">
-                                                        <%= form_for(@answers) do |f| %>
-                                                            <% wrd.choices.each do |c|%>
-                                                                <div class="form-check">
-                                                                    <%= f.radio_button :choice_id, c.id , required: 'required' %>
-                                                                    <%= f.hidden_field :lesson_id, value: @lesson_id %> 
-                                                                    <%= f.hidden_field :word_id, value: wrd.id %>
-                                                                    <label class="form-check-label" for="formCheck-1"><%= c.choices %> </label>
-                                                                </div>
-                                                            <% end %>
-                                                            <div class="form-group">
-                                                                <%= f.submit "Submit", class: "btn btn-outline-success" %>
-                                                            </div>
-                                                        <% end %>
-                                                        </div>
+<% provide(:title, "Learning #{@word.category.title} Words ") %>
+ <div class="row">
+    <%= render'shared/info_card' %>
+    <div class="col-md-6 col-xl-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-center mb-0"><i class="fa fa-book" style="padding-right: 5px;"></i> <%= @word.category.title%></h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                            <h5 class="text-center mb-0"> <%= @word.words %></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col offset-xl-3">
+                                        <div class="card" style="max-width: 300px;margin-bottom: 20px;margin-top: 20px;">
+                                            <div class="card-body m-4">
+                                            <%= form_for(@answer) do |f| %>
+                                                <% @word.choices.each do |c|%>
+                                                    <div class="form-check">
+                                                        <%= f.radio_button :choice_id, c.id , required: 'required' %>
+                                                        <%= f.hidden_field :lesson_id, value: @lesson.id %> 
+                                                        <%= f.hidden_field :word_id, value: @word.id %>
+                                                        <label class="form-check-label" for="formCheck-1"><%= c.choices %> </label>
                                                     </div>
+                                                <% end %>
+                                                <div class="form-group my-3 d-flex justify-content-center">
+                                                    <%= f.submit "Submit", class: "btn btn-outline-success" %>
                                                 </div>
-                                            </div>
-                                            <div class="row" style="padding-top: 15px;">
-                                                <div class="col d-flex justify-content-center">
-                                                </div>
+                                            <% end %>
                                             </div>
                                         </div>
-                                    <% end %>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 15px;">
+                                    <div class="col d-flex justify-content-center">
+                                    </div>
                                 </div>
                             </div>
                         </div>
